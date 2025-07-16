@@ -4,15 +4,32 @@ import { useState } from "react";
 import { useRouter } from "next/navigation";
 import FormField from "./FormField";
 import Logo from "../ui/Logo";
+import { getPasswordError } from "@/utils/validation";
 
 export default function SignInForm() {
   const router = useRouter();
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
+  const [passwordError, setPasswordError] = useState<string | null>(null);
   const [isSubmitting, setIsSubmitting] = useState(false);
+  const [hasInteracted, setHasInteracted] = useState(false);
+
+  const handlePasswordChange = (value: string) => {
+    setPassword(value);
+    if (hasInteracted) {
+      setPasswordError(getPasswordError(value));
+    }
+  };
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
+    setHasInteracted(true);
+    
+    const error = getPasswordError(password);
+    setPasswordError(error);
+    
+    if (error) return;
+
     setIsSubmitting(true);
     localStorage.setItem("isAuth", "true");
 
@@ -22,7 +39,7 @@ export default function SignInForm() {
   };
 
   return (
-    <div className="min-h-screen flex items-start justify-center bg-white px-4 md:items-center">
+    <div className="min-h-screen flex items-start md:items-center justify-center bg-white px-4">
       <form
         onSubmit={handleSubmit}
         className="flex flex-col items-center w-full max-w-xs"
@@ -54,12 +71,16 @@ export default function SignInForm() {
           type="password"
           placeholder="Enter your password"
           value={password}
-          onChange={(e) => setPassword(e.target.value)}
+          onChange={(e) => handlePasswordChange(e.target.value)}
           required
           aria-label="Password"
-          className="w-full h-[44px] px-4 border border-gray-400 rounded-lg mt-[11px] text-[14px]
-            focus:outline-none focus:ring-2 focus:ring-blue-500"
+          className={`w-full h-[44px] px-4 border rounded-lg mt-[11px] text-[14px]
+            focus:outline-none focus:ring-2 ${passwordError ? "border-red-500 focus:ring-red-500" : "border-gray-400 focus:ring-blue-500"}`}
         />
+
+        {passwordError && (
+          <p className="w-full text-red-600 text-[12px] mt-2">{passwordError}</p>
+        )}
 
         <button
           type="submit"
