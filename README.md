@@ -1,39 +1,99 @@
-# Clever's Frontend Coding Interview
-👋 Hello!, Hola!, Witam!
+# 📷 Clever Photos
 
-Thank you for taking the time to interview with Clever. This coding challenge is meant to be a _short_ exercise to see how you code on the frontend. Please don't spend more than a couple hours, and certainly don't stress. Treat it like you would any other coding task. Throw on some tunes 🎶, sit back, relax 😌, and code!
+A modern web application for browsing and favoriting nature photos, built for the Clever frontend challenge using **React**, **Next.js**, **TypeScript**, and **Tailwind CSS**.
 
-### Requirements
-- Create a small web app using React and Typescript.
-- Up to you how you scaffold it (eg. Next, Vite, even CRA).
-- However, please use either `npm` or `yarn.
-- It will utilize the Pexels API to pull in some photos. Details below.
-- We'd like you to create two (mobile responsive) pages:
-  1. Sign in
-  2. All photos
-- You can fork this repo and commit your code there. Once done, please add the following users as members so we can review:
-  - James Crain (@imjamescrain)
-  - Jimmy Lien (@jlien)
-  - Nick Clucas (@nickcluc)
-  - Ryan McCue (@rymccue)
-- We'll circle back with you and review 1:1.
+---
 
-### Details
-- Mocks for these pages are provided in Figma. You should have been sent an invite to access them, if not let us know.
-  - [Figma Mocks](https://www.figma.com/file/wr1seCuhlRtoFGuz1iWgyF/Frontend-Coding-Mocks?type=design&node-id=0%3A1&mode=design&t=Uw1av3TypDUDcLAd-1)
-  - We are looking for attention to detail when implementing these.
-- There is also a logo and an icon provided (SVGs) included in this repo.
-- Pexels API Info
-  - Api Key: `Mz0iC21IFLz9HuN8ypIbJ54l8OuGnpW2IsVoQrYBEyagQXt1YeBEA7H0`
-  - Include an `Authorization` header with this value.
-  - Endpoint: https://api.pexels.com/v1/search?query=nature&per_page=10
-  - Documenation: https://www.pexels.com/api/documentation/#photos-search
-- Make the "Sign in" page functional. However, you can spoof authentication any way you'd like (eg. save a value to local storage, etc).
-- Make "All photos" require authentication to access.
-- Only need to show 10 photos on the "All photos" page. Paging is not required.
+## 🌐 Live Demo
 
-### Final Thoughts
+Access the live version here:  
+👉 [https://clever-photos.netlify.app/signin](https://clever-photos.netlify.app/signin)
 
-Remember, please don't spend too much time on this. In fact, save a little time and **add a section to the README** outlining what else you'd do differently to make this a production ready app.
+---
 
-**Any questions**, just let us know. Send emails to <a href="mailto:james.crain@movewithclever.com">james.crain@movewithclever.com</a>. Good luck!
+## 📌 Overview
+
+Clever Photos allows users to:
+
+- Sign in (with spoofed authentication).
+- Browse a curated list of nature photos from the Pexels API.
+- Favorite/unfavorite photos with a single click.
+- View photographer details and portfolio links.
+- Enjoy a clean, responsive, and mobile-friendly UI.
+
+---
+
+## 🚀 Tech Stack
+
+- **React & Next.js** – Modern, scalable frontend framework with SSR and routing.
+- **TypeScript** – Type safety for reliability and maintainability.
+- **Tailwind CSS** – Utility-first CSS for rapid, consistent, and responsive design.
+- **Framer Motion** – Smooth animations for photo cards and transitions.
+- **Pexels API** – Real photo data for a realistic experience.
+
+---
+
+## 🖥️ Features
+
+- **Sign In Page** – Centralized, responsive login with validation.
+- **Photo Gallery** – Displays 10 nature photos from Pexels.
+- **Favorite Photos** – Click the star icon to favorite/unfavorite photos.
+- **Photographer Info** – See photographer name, portfolio link (with icon), and photo color details.
+- **Logout** – Securely log out from the app.
+- **Mobile Responsive** – Optimized for both desktop and mobile screens.
+- **Animations** – Card transitions and feedback using Framer Motion.
+- **Persistent Favorites** – Favorites are stored during the session.
+
+---
+
+## 📁 Project Structure
+
+- `app/` – Next.js app directory (routing, pages).
+- `components/` – Reusable UI components (SignInForm, PhotosView, PhotosCard, etc).
+- `hooks/` – Custom React hooks (authentication, favorites).
+- `styles/` – Tailwind and global CSS.
+- `types/` – TypeScript type definitions.
+- `public/` – Static assets (SVGs, logo, icons).
+- `README.md` – Project documentation.
+
+---
+
+## 🛠️ Getting Started
+
+### 1. Clone the repository
+
+```bash
+git clone https://github.com/fredericoberchof/clever-project.git
+cd clever-project
+```
+
+### 2. Install dependencies
+
+```bash
+npm install
+```
+
+### 3. Start the development server
+
+```bash
+npm run dev
+```
+
+### 4. Open the app
+
+Visit [http://localhost:3000](http://localhost:3000) in your browser.
+
+---
+
+## 🚀 Recommendations for Production
+
+To prepare this app for production, I would suggest:
+
+- **Full Authentication:** Replace spoofed login with real authentication (e.g., OAuth, JWT).
+- **Error Handling:** Add user-friendly error messages for API failures and network issues.
+- **Test Coverage:** Increase unit and integration test coverage for all components and hooks.
+- **SEO Optimization:** Add meta tags, Open Graph, and improve page titles/descriptions.
+- **State Management:** For scalability, consider using Zustand or Redux Toolkit.
+- **Add pagination:** To support a larger number of photos instead of just bringing the top ten.
+
+---
