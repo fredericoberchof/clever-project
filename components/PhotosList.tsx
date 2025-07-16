@@ -1,0 +1,44 @@
+"use client";
+
+import PhotoCard from "./PhotosCard";
+import { motion } from "framer-motion";
+
+type Photo = {
+  id: number;
+  photographer: string;
+  photographer_url: string;
+  src: { medium: string };
+  alt: string;
+  avg_color: string;
+};
+
+type PhotosListProps = {
+  photos: Photo[];
+  favorites: number[];
+  toggleFavorite: (id: number) => void;
+};
+
+export default function PhotosList({
+  photos,
+  favorites,
+  toggleFavorite,
+}: PhotosListProps) {
+ return (
+    <div className="flex flex-col gap-[12px]">
+      {photos.map((photo, idx) => (
+        <motion.div
+          key={photo.id}
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ delay: idx * 0.07, duration: 0.4 }}
+        >
+          <PhotoCard
+            photo={photo}
+            isFavorite={favorites.includes(photo.id)}
+            toggleFavorite={toggleFavorite}
+          />
+        </motion.div>
+      ))}
+    </div>
+  );
+}
