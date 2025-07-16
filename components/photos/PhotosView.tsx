@@ -1,41 +1,19 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import { useRouter } from "next/navigation";
-import Logo from "@/components/Logo";
-import PhotosList from "@/components/PhotosList";
 import { motion, AnimatePresence } from "framer-motion";
+import { Photo } from "@/types/photo";
+import { useFavorites } from "@/hooks/useFavorites";
+import { useAuth } from "@/hooks/useAuth";
+import PhotosList from "@/components/photos/PhotosList";
+import Logo from "../ui/Logo";
 
-type Photo = {
-  id: number;
-  photographer: string;
-  photographer_url: string;
-  src: { medium: string };
-  alt: string;
-  avg_color: string;
-};
-
-export default function PhotosPage() {
-  const router = useRouter();
+export default function PhotosView() {
   const [photos, setPhotos] = useState<Photo[]>([]);
-  const [favorites, setFavorites] = useState<number[]>([]);
   const [isLoading, setIsLoading] = useState(true);
-  const [checkingAuth, setCheckingAuth] = useState(true);
 
-  const toggleFavorite = (id: number) => {
-    setFavorites((prev) =>
-      prev.includes(id) ? prev.filter((fav) => fav !== id) : [...prev, id]
-    );
-  };
-
-  useEffect(() => {
-    const isAuth = localStorage.getItem("isAuth");
-    if (!isAuth) {
-      router.push("/signin");
-    } else {
-      setCheckingAuth(false);
-    }
-  }, [router]);
+  const { favorites, toggleFavorite } = useFavorites();
+  const { checkingAuth, logout } = useAuth();
 
   useEffect(() => {
     const fetchPhotos = async () => {
@@ -68,16 +46,13 @@ export default function PhotosPage() {
         <div className="flex items-center justify-between mb-2">
           <Logo />
           <button
-            onClick={() => {
-              localStorage.removeItem("isAuth");
-              router.push("/signin");
-            }}
+            onClick={logout}
             className="text-sm font-bold text-blue-600 cursor-pointer hover:text-blue-800 transition-colors duration-200"
           >
             Logout
           </button>
         </div>
-        <h1 className="font-bold text-[20px] mt-[24px] mb-8 font-['Helvetica']">
+        <h1 className="font-bold text-[20px] mt-[24px] mb-8">
           All photos
         </h1>
         <AnimatePresence mode="wait">

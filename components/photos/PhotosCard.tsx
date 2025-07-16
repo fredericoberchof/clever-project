@@ -1,15 +1,7 @@
 "use client";
 
+import { Photo } from "@/types/photo";
 import Link from "next/link";
-
-type Photo = {
-  id: number;
-  photographer: string;
-  photographer_url: string;
-  src: { medium: string };
-  alt: string;
-  avg_color: string;
-};
 
 type PhotoCardProps = {
   photo: Photo;
@@ -54,22 +46,16 @@ export default function PhotoCard({
         className="w-20 h-20 object-cover rounded-lg"
       />
 
-      <div className="flex flex-col flex-1 font-['Helvetica']">
+      <div className="flex flex-col flex-1">
         <p className="font-bold text-[14px]">{photo.photographer}</p>
         <p className="text-[#111827] text-[14px]">
           {photo.alt || "No alt text"}
         </p>
-         <p className="text-[14px] text-gray-500 flex items-center gap-1">
-          <span style={{ color: photo.avg_color }}>
-            #{photo.id}
-          </span>
+        <p className="text-[14px] text-gray-500 flex items-center gap-1">
+          <span style={{ color: photo.avg_color }}>#{photo.id}</span>
           <span
-            className="inline-block ml-1"
-            style={{
-              backgroundColor: photo.avg_color,
-              width: "12px",
-              height: "12px",
-            }}
+            className="inline-block ml-1 w-[12px] h-[12px]"
+            style={{ backgroundColor: photo.avg_color }}
           ></span>
         </p>
       </div>

@@ -1,6 +1,5 @@
-import PhotosPage from "@/components/PhotosPage";
-
+import PhotosView from "@/components/photos/PhotosView";
 
 export default function Photos() {
-  return <PhotosPage />;
+  return <PhotosView />;
 }

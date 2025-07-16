@@ -1,16 +1,8 @@
 "use client";
 
-import PhotoCard from "./PhotosCard";
+import { Photo } from "@/types/photo";
 import { motion } from "framer-motion";
-
-type Photo = {
-  id: number;
-  photographer: string;
-  photographer_url: string;
-  src: { medium: string };
-  alt: string;
-  avg_color: string;
-};
+import PhotoCard from "./PhotosCard";
 
 type PhotosListProps = {
   photos: Photo[];

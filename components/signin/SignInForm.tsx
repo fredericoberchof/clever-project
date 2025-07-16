@@ -2,8 +2,8 @@
 
 import { useState } from "react";
 import { useRouter } from "next/navigation";
-import Logo from "./Logo";
 import FormField from "./FormField";
+import Logo from "../ui/Logo";
 
 export default function SignInForm() {
   const router = useRouter();
@@ -28,8 +28,8 @@ export default function SignInForm() {
         className="flex flex-col items-center w-full max-w-xs"
       >
         <div className="mt-[36px] md:mt-0">
-  <Logo />
-</div>
+          <Logo />
+        </div>
 
         <h1 className="mt-[24px] text-[20px] font-bold text-center">
           Sign in to your account

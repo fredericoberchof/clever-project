@@ -16,7 +16,7 @@ export default function FormField({
 }: FormFieldProps) {
   return (
     <label className={`w-full ${className}`}>
-      <span className="block mb-2 text-[14px] font-bold font-['Helvetica']">
+      <span className="block mb-2 text-[14px] font-bold">
         {label}
       </span>
       <input
@@ -26,7 +26,7 @@ export default function FormField({
         onChange={(e) => onChange(e.target.value)}
         required
         aria-label={label}
-        className="w-full h-[44px] px-4 border border-gray-400 rounded-lg font-['Helvetica'] text-[14px]
+        className="w-full h-[44px] px-4 border border-gray-400 rounded-lg text-[14px]
           focus:outline-none focus:ring-2 focus:ring-blue-500"
       />
     </label>
