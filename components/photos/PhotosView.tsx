@@ -6,6 +6,7 @@ import { Photo } from "@/types/photo";
 import { useFavorites } from "@/hooks/useFavorites";
 import { useAuth } from "@/hooks/useAuth";
 import PhotosList from "@/components/photos/PhotosList";
+import { fetchPhotos } from "@/services/photosApi";
 import Logo from "../ui/Logo";
 
 export default function PhotosView() {
@@ -16,29 +17,21 @@ export default function PhotosView() {
   const { checkingAuth, logout } = useAuth();
 
   useEffect(() => {
-    const fetchPhotos = async () => {
-      setIsLoading(true);
-
-      const res = await fetch(
-        "https://api.pexels.com/v1/search?query=nature&per_page=10",
-        {
-          headers: {
-            Authorization:
-              "Mz0iC21IFLz9HuN8ypIbJ54l8OuGnpW2IsVoQrYBEyagQXt1YeBEA7H0",
-          },
-        }
-      );
-      const data = await res.json();
-      setPhotos(data.photos);
-      setIsLoading(false);
+    const load = async () => {
+      try {
+        setIsLoading(true);
+        const photos = await fetchPhotos();
+        setPhotos(photos);
+      } catch (error) {
+        console.error("Error loading photos:", error);
+      } finally {
+        setIsLoading(false);
+      }
     };
-
-    fetchPhotos();
+    load();
   }, []);
 
-  if (checkingAuth) {
-    return null;
-  }
+  if (checkingAuth) return null;
 
   return (
     <main className="min-h-screen bg-white px-4 py-8 flex justify-center">
@@ -52,9 +45,8 @@ export default function PhotosView() {
             Logout
           </button>
         </div>
-        <h1 className="font-bold text-[20px] mt-[24px] mb-8">
-          All photos
-        </h1>
+        <h1 className="font-bold text-[20px] mt-[24px] mb-8">All photos</h1>
+
         <AnimatePresence mode="wait">
           {isLoading ? (
             <motion.div
@@ -64,7 +56,7 @@ export default function PhotosView() {
               exit={{ opacity: 0 }}
               className="flex justify-center py-10"
             >
-              <div className="w-12 h-12 border-4 border-blue-500 border-t-transparent rounded-full animate-spin"></div>
+              <div className="w-12 h-12 border-4 border-blue-500 border-t-transparent rounded-full animate-spin" />
             </motion.div>
           ) : (
             <motion.div

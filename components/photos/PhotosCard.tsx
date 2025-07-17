@@ -23,13 +23,13 @@ export default function PhotoCard({
         aria-label={isFavorite ? "Unfavorite" : "Favorite"}
       >
         {isFavorite ? (
-          <svg width="24" height="24" fill="#FFD700" viewBox="0 0 24 24">
+          <svg width="20" height="20" fill="#FFD700" viewBox="0 0 24 24">
             <path d="M12 17.75l-6.172 3.245 1.179-6.881-5-4.873 6.9-1.002L12 2.25l3.093 6.989 6.9 1.002-5 4.873 1.179 6.881z" />
           </svg>
         ) : (
           <svg
-            width="24"
-            height="24"
+            width="20"
+            height="20"
             fill="none"
             stroke="#FFD700"
             strokeWidth="2"
@@ -63,7 +63,7 @@ export default function PhotoCard({
       <Link
         href={photo.photographer_url}
         target="_blank"
-        className="text-[#0075EB] text-[12px] flex items-center gap-1"
+        className="text-[#0075EB] text-[12px] flex items-center gap-1 transition-colors hover:text-blue-800"
       >
         <img src="/links.svg" alt="Link icon" width={12} height={12} />
         Portfolio

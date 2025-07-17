@@ -4,7 +4,7 @@ import { useState } from "react";
 import { useRouter } from "next/navigation";
 import FormField from "./FormField";
 import Logo from "../ui/Logo";
-import { getPasswordError } from "@/utils/validation";
+import { getPasswordError } from "@/utils/passwordValidation";
 
 export default function SignInForm() {
   const router = useRouter();
