@@ -2,6 +2,7 @@
 
 import { Photo } from "@/types/photo";
 import Link from "next/link";
+import Image from "next/image";
 
 type PhotoCardProps = {
   photo: Photo;
@@ -40,10 +41,13 @@ export default function PhotoCard({
         )}
       </button>
 
-      <img
+      <Image
         src={photo.src.medium}
         alt={photo.alt}
+        width={75}
+        height={75}
         className="w-20 h-20 object-cover rounded-lg"
+        loading="lazy"
       />
 
       <div className="flex flex-col flex-1">
@@ -65,7 +69,13 @@ export default function PhotoCard({
         target="_blank"
         className="text-[#0075EB] text-[12px] flex items-center gap-1 transition-colors hover:text-blue-800"
       >
-        <img src="/links.svg" alt="Link icon" width={12} height={12} />
+        <Image
+          src="/links.svg"
+          alt="Link icon"
+          width={12}
+          height={12}
+          loading="lazy"
+        />
         Portfolio
       </Link>
     </div>
