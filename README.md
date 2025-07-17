@@ -92,13 +92,13 @@ To prepare this app for production, I would suggest:
 
 - **Full Authentication:** Replace spoofed login with real authentication (e.g., OAuth, JWT).
 - **Security:** Protect API keys and sensitive data. Use HTTPS everywhere.
-- **Error Handling & User Feedback:** Add user-friendly error messages for API failures and network issues. Use toast notifications for actions
+- **Error Handling & User Feedback:** Add user-friendly error messages for API failures and network issues. Use toast notifications for actions.
 - **Test Coverage:** Increase unit and integration test coverage for all components and hooks.
 - **SEO Optimization:** Add meta tags, Open Graph, and improve page titles/descriptions.
 - **Persistence & State Management:** Store favorites and user data in a backend or use localStorage with user scoping. For scalability, consider using Zustand or Redux.
 - **Add pagination:** To support a larger number of photos instead of just bringing the top ten.
 - **Internationalization:** Support multiple languages/locales if needed.
 - **Add documentation:** Document components and business logic.
-- **Deployment:** Use environment variables for config and secrets. Set up CI/CD for automated testing and deployment. Optimize build for production
+- **Deployment:** Use environment variables for config and secrets. Set up CI/CD for automated testing and deployment. Optimize build for production.
 
 ---
