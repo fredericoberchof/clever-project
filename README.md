@@ -51,9 +51,10 @@ Clever Photos allows users to:
 - `app/` – Next.js app directory (routing, pages).
 - `components/` – Reusable UI components (SignInForm, PhotosView, PhotosCard, etc).
 - `hooks/` – Custom React hooks (authentication, favorites).
+- `public/` – Static assets (SVGs, logo, icons).
+- `services/` – API service.
 - `styles/` – Tailwind and global CSS.
 - `types/` – TypeScript type definitions.
-- `public/` – Static assets (SVGs, logo, icons).
 - `README.md` – Project documentation.
 
 ---
